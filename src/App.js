@@ -7,14 +7,13 @@ const useStyles = makeStyles({
   root: {
     justifyContent: "space-around",
     marginTop: 50,
-    maxWidth: 1200,
-    marginLeft: 200,
-    marginRight: 200,
+    maxWidth: 1100,
+    margin: "auto",
   },
   main_title: {},
   main_body: {
-    marginTop: 80,
-    marginBottom: 80,
+    marginTop: 90,
+    marginBottom: 90,
   },
   feeds: {},
   text_body: {
