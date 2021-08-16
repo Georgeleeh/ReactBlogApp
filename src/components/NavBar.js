@@ -36,7 +36,7 @@ function NavBar() {
   return (
     <AppBar position="static">
       <Toolbar>
-        <ButtonBase onClick={() => handleClick("")}>
+        <ButtonBase onClick={() => handleClick("/")}>
           <Typography variant="h6" className={classes.title}>
             George Harris
           </Typography>
@@ -44,7 +44,7 @@ function NavBar() {
         <div className={classes.menuButton}>
           <Button
             className={classes.button}
-            onClick={() => handleClick("blog")}
+            onClick={() => handleClick("/blog")}
           >
             Blog
           </Button>
