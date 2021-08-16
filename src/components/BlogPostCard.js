@@ -15,6 +15,7 @@ import {
 import ShareIcon from "@material-ui/icons/Share";
 import BookIcon from "@material-ui/icons/Book";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -44,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
 
 export const BlogPostCard = ({ blogpost }) => {
   const classes = useStyles();
+  const history = useHistory();
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -52,7 +54,11 @@ export const BlogPostCard = ({ blogpost }) => {
 
   return (
     <Card className={classes.card} variant="outlined" key={blogpost.id}>
-      <CardActionArea>
+      <CardActionArea
+        onClick={() => {
+          history.push("/blog/" + blogpost.id);
+        }}
+      >
         <CardMedia
           className={classes.media}
           image={blogpost.cover_image}
