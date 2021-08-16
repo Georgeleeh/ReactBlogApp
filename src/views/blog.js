@@ -21,7 +21,7 @@ function Blog(tag) {
   useEffect(() => {
     fetch("http://localhost:5000/blogpost").then((response) =>
       response.json().then((data) => {
-        setBlogposts(data.blogposts);
+        setBlogposts(data.blogposts.reverse());
       })
     );
   }, []);
@@ -34,7 +34,7 @@ function Blog(tag) {
         </Typography>
       </div>
       <Grid container spacing={3}>
-        {blogposts.reverse().map((blogpost) => {
+        {blogposts.map((blogpost) => {
           return (
             <Grid key={blogpost.id} item>
               <BlogPostCard blogpost={blogpost} />
