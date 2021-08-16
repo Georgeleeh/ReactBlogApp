@@ -35,7 +35,7 @@ function BlogpostDetail() {
   function deletePost() {
     fetch("http://localhost:5000/blogpost/" + blogpost_id, {
       method: "DELETE",
-    }).then(history.push("/blog"));
+    }).then(history.goBack());
   }
 
   return (
