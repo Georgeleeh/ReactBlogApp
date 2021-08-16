@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { makeStyles, Typography } from "@material-ui/core";
-import { useParams } from "react-router-dom";
+import { Button, makeStyles, Typography } from "@material-ui/core";
+import { useHistory, useParams } from "react-router-dom";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 const useStyles = makeStyles({
   main_title: {},
@@ -19,17 +20,23 @@ const useStyles = makeStyles({
 
 function BlogpostDetail() {
   const classes = useStyles();
+  const history = useHistory();
   const [blogpost, setBlogpost] = useState([]);
   const { blogpost_id } = useParams();
 
   useEffect(() => {
     fetch("http://localhost:5000/blogpost/" + blogpost_id).then((response) =>
       response.json().then((data) => {
-        console.log(data);
         setBlogpost(data.blogpost);
       })
     );
   }, [blogpost_id]);
+
+  function deletePost() {
+    fetch("http://localhost:5000/blogpost/" + blogpost_id + "/delete", {
+      method: "DELETE",
+    }).then(history.push("/blog"));
+  }
 
   return (
     <div>
@@ -47,6 +54,14 @@ function BlogpostDetail() {
           {blogpost.content}
         </Typography>
       </div>
+      <Button
+        onClick={deletePost}
+        variant="outlined"
+        color="secondary"
+        startIcon={<DeleteIcon />}
+      >
+        Delete
+      </Button>
     </div>
   );
 }
