@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Grid, makeStyles, Typography } from "@material-ui/core";
 import { BlogPostCard } from "../components/BlogPostCard";
-import { TagField } from "../components/TagField";
+import TagField from "../components/TagField";
 
 const useStyles = makeStyles({
   main_title: {},

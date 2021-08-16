@@ -1,34 +1,43 @@
 import { TextField } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
-import React, { useEffect, useState } from "react";
+import React, { Component } from "react";
 
-export const TagField = () => {
-  const [tags, setTags] = useState([]);
+class TagField extends Component {
+  constructor(props) {
+    super(props);
 
-  useEffect(() => {
+    this.state = {
+      tags: [],
+    };
+  }
+
+  componentDidMount() {
     fetch("http://localhost:5000/tag").then((response) =>
       response.json().then((data) => {
-        console.log(data);
-        setTags(data.tags);
+        this.setState((state) => ({ tags: data.tags }));
       })
     );
-  }, []);
+  }
 
-  return (
-    <Autocomplete
-      multiple
-      id="tags-outlined"
-      options={tags}
-      getOptionLabel={(option) => option.name}
-      filterSelectedOptions
-      renderInput={(params) => (
-        <TextField
-          {...params}
-          variant="outlined"
-          label="Tags"
-          placeholder="Tags"
-        />
-      )}
-    />
-  );
-};
+  render() {
+    return (
+      <Autocomplete
+        multiple
+        id="tags-outlined"
+        options={this.state.tags}
+        getOptionLabel={(option) => option.name}
+        filterSelectedOptions
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            variant="outlined"
+            label="Tags"
+            placeholder="Tags"
+          />
+        )}
+      />
+    );
+  }
+}
+
+export default TagField;
