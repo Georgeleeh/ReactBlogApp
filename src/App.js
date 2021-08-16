@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import Home from "./views/home";
 import { Route, Switch } from "react-router-dom";
 import Blog from "./views/blog";
+import BlogpostDetail from "./views/BlogpostDetail";
 
 const useStyles = makeStyles({
   root: {
@@ -32,12 +33,9 @@ function App() {
       <NavBar />
       <div className={classes.root}>
         <Switch>
-          <Route path="/" exact>
-            <Home />
-          </Route>
-          <Route path="/blog" exact>
-            <Blog />
-          </Route>
+          <Route path="/" component={Home} exact />
+          <Route path="/blog" component={Blog} exact />
+          <Route path="/blog/:blogpost_id" component={BlogpostDetail} />
         </Switch>
       </div>
     </div>
