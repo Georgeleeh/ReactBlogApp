@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-function Blog(tag) {
+function Blog() {
   const [blogposts, setBlogposts] = useState([]);
   const classes = useStyles();
 
