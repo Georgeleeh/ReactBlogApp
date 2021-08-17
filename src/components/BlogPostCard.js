@@ -10,7 +10,6 @@ import {
   CardMedia,
   Collapse,
   IconButton,
-  Link,
 } from "@material-ui/core";
 import ShareIcon from "@material-ui/icons/Share";
 import BookIcon from "@material-ui/icons/Book";
@@ -100,11 +99,7 @@ export const BlogPostCard = ({ blogpost }) => {
           </Typography>
           <Typography className={classes.tag}>
             {blogpost.tags.map((tag, index) => {
-              return (
-                <Link key={tag.name} href="">
-                  {(index ? ", " : "") + tag.name}
-                </Link>
-              );
+              return (index ? ", " : "") + tag.name;
             })}
           </Typography>
         </CardContent>
