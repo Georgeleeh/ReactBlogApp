@@ -21,15 +21,40 @@ const useStyles = makeStyles({
 
 function Blog() {
   const [blogposts, setBlogposts] = useState([]);
+  const [visBlogposts, setVisBlogposts] = useState([]);
+  const [tags, setTags] = useState([]);
   const classes = useStyles();
 
   useEffect(() => {
     fetch("http://localhost:5000/blogpost").then((response) =>
       response.json().then((data) => {
         setBlogposts(data.blogposts.reverse());
+        setVisBlogposts(data.blogposts);
       })
     );
   }, []);
+
+  function handleTagsChange(event, values) {
+    const mappedValues = values.map((v) => {
+      return v.name;
+    });
+
+    setTags(mappedValues);
+
+    if (mappedValues.length < 1) {
+      setVisBlogposts(blogposts);
+    } else {
+      setVisBlogposts(
+        blogposts.filter((blogpost) => {
+          return blogpost.tags
+            .map((t) => {
+              return t.name;
+            })
+            .some((r) => mappedValues.includes(r));
+        })
+      );
+    }
+  }
 
   return (
     <div>
@@ -39,10 +64,10 @@ function Blog() {
         </Typography>
       </div>
       <div className={classes.tag_field}>
-        <TagField />
+        <TagField handleChange={handleTagsChange} />
       </div>
       <Grid container spacing={3}>
-        {blogposts.map((blogpost) => {
+        {visBlogposts.map((blogpost) => {
           return (
             <Grid key={blogpost.id} item>
               <BlogPostCard blogpost={blogpost} />
