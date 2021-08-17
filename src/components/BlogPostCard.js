@@ -101,8 +101,8 @@ export const BlogPostCard = ({ blogpost }) => {
           <Typography className={classes.tag}>
             {blogpost.tags.map((tag, index) => {
               return (
-                <Link key={tag} href="">
-                  {(index ? ", " : "") + tag}
+                <Link key={tag.name} href="">
+                  {(index ? ", " : "") + tag.name}
                 </Link>
               );
             })}
