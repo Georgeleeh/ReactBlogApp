@@ -24,6 +24,7 @@ class TagField extends Component {
       <Autocomplete
         multiple
         id="tags-outlined"
+        onChange={this.props.handleChange}
         options={this.state.tags}
         getOptionLabel={(option) => option.name}
         filterSelectedOptions
