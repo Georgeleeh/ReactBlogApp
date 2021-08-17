@@ -46,11 +46,13 @@ function Blog() {
     } else {
       setVisBlogposts(
         blogposts.filter((blogpost) => {
-          return blogpost.tags
-            .map((t) => {
-              return t.name;
-            })
-            .some((r) => mappedValues.includes(r));
+          return mappedValues.every((r) =>
+            blogpost.tags
+              .map((t) => {
+                return t.name;
+              })
+              .includes(r)
+          );
         })
       );
     }
