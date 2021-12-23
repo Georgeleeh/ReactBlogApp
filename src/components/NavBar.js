@@ -4,9 +4,12 @@ import {
   AppBar,
   Button,
   ButtonBase,
+  IconButton,
   Toolbar,
+  Tooltip,
   Typography,
 } from "@material-ui/core";
+import GitHubIcon from "@material-ui/icons/GitHub";
 import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -33,6 +36,10 @@ function NavBar() {
     history.push(path);
   }
 
+  function handleExternalClick(link) {
+    window.open(link);
+  }
+
   return (
     <AppBar position="static">
       <Toolbar>
@@ -49,6 +56,26 @@ function NavBar() {
             Blog
           </Button>
         </div>
+        <Tooltip title="React Frontend">
+          <IconButton
+            aria-label="Github"
+            onClick={() =>
+              handleExternalClick("https://github.com/Georgeleeh/ReactBlogApp")
+            }
+          >
+            <GitHubIcon className={classes.button} href="google.com" />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Python Backend">
+          <IconButton
+            aria-label="Github"
+            onClick={() =>
+              handleExternalClick("https://github.com/Georgeleeh/ReactBlogAPI")
+            }
+          >
+            <GitHubIcon className={classes.button} href="google.com" />
+          </IconButton>
+        </Tooltip>
       </Toolbar>
     </AppBar>
   );
