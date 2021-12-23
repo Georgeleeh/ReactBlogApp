@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     height: 140,
+    objectFit: "cover",
   },
   post_title: {
     fontSize: 18,

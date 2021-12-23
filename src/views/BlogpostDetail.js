@@ -6,7 +6,9 @@ import DeleteIcon from "@material-ui/icons/Delete";
 const useStyles = makeStyles({
   main_title: {},
   cover_image: {
-    maxHeight: 400,
+    maxHeight: 300,
+    objectFit: "cover",
+    width: "100%",
   },
   main_body: {
     marginTop: 90,
