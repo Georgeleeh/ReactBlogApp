@@ -49,7 +49,7 @@ function Blog() {
           return mappedValues.every((r) =>
             blogpost.tags
               .map((t) => {
-                return t.name;
+                return t;
               })
               .includes(r)
           );

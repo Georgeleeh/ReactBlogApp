@@ -100,7 +100,7 @@ export const BlogPostCard = ({ blogpost }) => {
           </Typography>
           <Typography className={classes.tag}>
             {blogpost.tags.map((tag, index) => {
-              return (index ? ", " : "") + tag.name;
+              return (index ? ", " : "") + tag;
             })}
           </Typography>
         </CardContent>
