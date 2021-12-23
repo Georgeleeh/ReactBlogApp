@@ -5,6 +5,7 @@ import Home from "./views/home";
 import { Route, Switch } from "react-router-dom";
 import Blog from "./views/blog";
 import BlogpostDetail from "./views/BlogpostDetail";
+import Portfolio from "./views/portfolio";
 
 const useStyles = makeStyles({
   root: {
@@ -34,6 +35,7 @@ function App() {
       <div className={classes.root}>
         <Switch>
           <Route path="/" component={Home} exact />
+          <Route path="/portfolio" component={Portfolio} exact />
           <Route path="/blog" component={Blog} exact />
           <Route path="/blog/:blogpost_id" component={BlogpostDetail} />
         </Switch>

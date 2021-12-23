@@ -58,6 +58,13 @@ function NavBar() {
           >
             <Button
               className={classes.button}
+              onClick={() => handleClick("/portfolio")}
+              sx={{ my: 2, display: "block" }}
+            >
+              Portfolio
+            </Button>
+            <Button
+              className={classes.button}
               onClick={() => handleClick("/blog")}
               sx={{ my: 2, display: "block" }}
             >
