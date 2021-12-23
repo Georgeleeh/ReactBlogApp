@@ -25,7 +25,9 @@ function BlogpostDetail() {
   const { blogpost_id } = useParams();
 
   useEffect(() => {
-    fetch("http://localhost:5000/blogpost/" + blogpost_id).then((response) =>
+    fetch("http://127.0.0.1:5000/blogpost/" + blogpost_id, {
+      mode: "cors",
+    }).then((response) =>
       response.json().then((data) => {
         setBlogpost(data.blogpost);
       })
@@ -33,8 +35,9 @@ function BlogpostDetail() {
   }, [blogpost_id]);
 
   function deletePost() {
-    fetch("http://localhost:5000/blogpost/" + blogpost_id, {
+    fetch("http://127.0.0.1:5000/blogpost/" + blogpost_id, {
       method: "DELETE",
+      mode: "cors",
     }).then(history.goBack());
   }
 

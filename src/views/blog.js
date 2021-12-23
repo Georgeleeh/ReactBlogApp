@@ -26,7 +26,7 @@ function Blog() {
   const classes = useStyles();
 
   useEffect(() => {
-    fetch("http://localhost:5000/blogpost").then((response) =>
+    fetch("http://127.0.0.1:5000/blogpost", { mode: "cors" }).then((response) =>
       response.json().then((data) => {
         setBlogposts(data.blogposts.reverse());
         setVisBlogposts(data.blogposts);

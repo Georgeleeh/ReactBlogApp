@@ -12,7 +12,7 @@ class TagField extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:5000/tag").then((response) =>
+    fetch("http://127.0.0.1:5000/tag", { mode: "cors" }).then((response) =>
       response.json().then((data) => {
         this.setState((state) => ({ tags: data.tags }));
       })
